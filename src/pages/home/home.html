@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="danger">
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+
+
+
+</ion-header>
+
+<ion-content class="cards-bg icons-basic-page home getstart" >
+
+
+  <ion-card>
+
+    <!--<ion-item>-->
+      <!--<ion-avatar item-left>-->
+        <!--<img src="img/234radio.jpg">-->
+      <!--</ion-avatar>-->
+      <!--&lt;!&ndash;<h2>Marty McFly</h2>&ndash;&gt;-->
+      <!--&lt;!&ndash;<p>November 5, 1955</p>&ndash;&gt;-->
+    <!--</ion-item>-->
+
+    <img src="img/234radio.jpg"/>
+    <ion-card-content>
+      <h2 class="card-title" color="danger">
+        234Radio Live!!!
+      </h2>
+      <p color="danger">
+        Get unlimited access to unparalleled programmes and news on the radio, access our social media platforms and be our reporter via iWitness.
+
+      </p>
+      </ion-card-content>
+
+     <ion-slides [options]="mySlideOptions" (ionWillChange)="onSlideChangeStart($event)">
+    <ion-slide>
+      <img src="img/atittude.jpg" class="slide-image"/>
+    </ion-slide>
+    <ion-slide>
+      <img src="img/dance.jpg" class="slide-image"/>
+
+    </ion-slide>
+    <ion-slide>
+      <img src="img/mic.jpg" class="slide-image"/>
+
+    </ion-slide>
+    <ion-slide>
+      <img src="img/music.jpg" class="slide-image"/>
+
+    </ion-slide>
+  </ion-slides>
+
+      <ion-row>
+        <!--<ion-col width-50><ion-icon (click)="changeState()" name="{{playState}}" fb></ion-icon><p fb>Listen Live</p></ion-col>-->
+        <ion-col width-50><ion-icon (click)="Toggle()" name="{{playState}}" color="fb"><p color="fb">Listen Live</p><audio  src="http://streaming.radio.co/s7f3695a64/listen" id="toggle" autoplay="false" ></audio></ion-icon></ion-col>
+        <ion-col width-50><ion-icon (click)="gotoReport()" ios="ios-recording" md="md-recording" color="danger"><p color="danger">iWitness</p></ion-icon></ion-col>
+        <ion-col width-50><ion-icon (click)="gotoContact()" ios="ios-mail" md="md-mail"  color="secondary"></ion-icon><p color="secondary">Contact Us</p></ion-col>
+        <ion-col width-50><ion-icon (click)="gotoPrograms()" ios="ios-list-box" md="md-list-box" color="favorite"></ion-icon><p color="favorite">Programme Schedule</p></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col width-50><ion-icon (click)="makeCall('tel:+2348035814545')" ios="ios-call" md="md-call" color="favorite"><p color="favorite">Call Us</p></ion-icon></ion-col>
+        <ion-col width-50><ion-icon (click)="openFacebook()" ios="logo-facebook" md="logo-facebook" color="fb"></ion-icon><p color="fb">Facebook</p></ion-col>
+        <ion-col width-50><ion-icon (click)="openTwitter()" ios="logo-twitter" md="logo-twitter" color="tweet"></ion-icon><p color="tweet">Twitter</p></ion-col>
+        <ion-col width-50><ion-icon (click)="openWeb()" ios="ios-link" md="md-link"  color="dark"></ion-icon><p color="dark">Website</p></ion-col>
+      </ion-row>
+
+    <!--</ion-grid>-->
+
+
+  </ion-card>
+
+
+
+</ion-content>
+
+<style>
+  .social-cards ion-col {
+    padding: 0;
+  }
+</style>
