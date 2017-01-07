@@ -103,15 +103,15 @@ mySlideOptions = {
   });
 }
 
-
-
-
   openWeb(){
+    console.log("Web clicked");
     let browser = new InAppBrowser.open('http://234radio.com', '_blank', "EnableViewPortScale=yes,location=no" );
     browser.show();
+    console.log(browser);
   }
 
   gotoReport(){
+    console.log("Report clicked");
     this.navCtrl.setRoot(ReportPage);
   }
 
@@ -120,31 +120,36 @@ mySlideOptions = {
   }
 
   gotoContact(){
+    console.log("Contact clicked");
     this.navCtrl.setRoot(ContactPage);
   }
 
   gotoPrograms(){
-
+    console.log("Programs Clicked");
     let browser = new InAppBrowser.open('http://234radio.com/programmes/', '_blank', "EnableViewPortScale=yes,location=no" );
     browser.show();
   }
 
   openFacebook(){
+    console.log("Open Facbook");
     let browser = new InAppBrowser.open('https://www.facebook.com/234radio', '_blank', "EnableViewPortScale=yes,location=no" );
     browser.show();
   }
 
   openTwitter(){
+    console.log("Open Twitter");
     let browser = new InAppBrowser.open('https://twitter.com/my234Radio', '_blank', "EnableViewPortScale=yes,location=no" );
     browser.show();
   }
 
   openInstagram(){
+    console.log("Open Instagram");
     let browser = new InAppBrowser.open('http://234radio.com', '_blank', "EnableViewPortScale=yes,location=no" );
     browser.show();
   }
 
   makeCall(passedNumber){
+    console.log("MakeCall passedNumber");
     window.location = passedNumber;
   }
 
