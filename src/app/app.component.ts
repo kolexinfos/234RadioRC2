@@ -5,7 +5,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { HomePage } from '../pages/home/home';
 import { ReportPage } from '../pages/report/report';
-import { WebPage } from '../pages/web/web';
+import { VerifyPage } from '../pages/verify/verify';
 
 interface PageObj {
   title: string;
@@ -25,7 +25,7 @@ export class MyApp {
   pages : PageObj[] = [
     { title: 'Home', component: HomePage, icon: 'contacts' },
     { title: 'iWitness', component: ReportPage, icon: 'paper', index:2 },
-    { title: 'Share', component: WebPage, icon: 'mail', index:3 }
+    { title: 'Share', component: VerifyPage, icon: 'mail', index:3 }
   ];
 
   constructor(platform: Platform) {

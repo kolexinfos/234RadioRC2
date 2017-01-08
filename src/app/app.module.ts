@@ -5,7 +5,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { ReportPage } from '../pages/report/report';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { WebPage } from '../pages/web/web';
+import { VerifyPage } from '../pages/verify/verify';
 
 import { RadioPlayer } from '../providers/radio-player/radio-player';
 import { MessageProvider } from '../providers/message-provider/message-provider';
@@ -17,7 +17,7 @@ import { MessageProvider } from '../providers/message-provider/message-provider'
     HomePage,
     ReportPage,
     TutorialPage,
-    WebPage
+    VerifyPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -29,7 +29,7 @@ import { MessageProvider } from '../providers/message-provider/message-provider'
     HomePage,
     ReportPage,
     TutorialPage,
-    WebPage
+    VerifyPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},RadioPlayer, MessageProvider]
 })

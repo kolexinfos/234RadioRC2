@@ -29,25 +29,20 @@ mySlideOptions = {
 
   playState: string
 
-
-
-
   player:any;
   constructor(player: RadioPlayer, public navCtrl: NavController, public loadingCtrl: LoadingController) {
     this.player = player;
     this.playState = "pause";
     //this.startPlaying();
     console.log("Constructor called");
-
-
-
   }
 
+  
   ionViewDidEnter() {
     var audioElement = <HTMLAudioElement>document.getElementById("toggle");
 
     let loadingPopup = this.loadingCtrl.create({
-      content: 'Loading please wait...'
+      content: 'Loading the stream please wait...'
     });
 
     loadingPopup.present();
