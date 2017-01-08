@@ -1,11 +1,11 @@
 <ion-header>
-	<ion-navbar danger>
+	<ion-navbar color="danger">
 		<ion-title>
 		 Feedback
 		</ion-title>
 
-		 <button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+		 <button ion-button menuToggle start>
+        <ion-icon name="ios-menu-outline"></ion-icon>
     </button>
 	</ion-navbar>
 </ion-header>
@@ -15,7 +15,7 @@
 
       <form #reportForm="ngForm" novalidate>
         <ion-item>
-          <ion-label floating primary>Title</ion-label>
+          <ion-label floating color="primary">Title</ion-label>
           <ion-input [(ngModel)]="report.title" name="title" type="text" #title="ngModel" required></ion-input>
         </ion-item>
         <div [hidden]="title.valid || title.untouched" >
@@ -25,42 +25,42 @@
         </div>
 
         <ion-item>
-          <ion-label floating primary>Email Address</ion-label>
+          <ion-label floating color="primary">Email Address</ion-label>
           <ion-input [(ngModel)]="report.email" name="email" type="text" #email="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
           </ion-input>
         </ion-item>
         <div [hidden]="email.valid || email.untouched" >
-          <p  *ngIf="email.errors && email.errors.required" danger padding-left>
+          <p  *ngIf="email.errors && email.errors.required" color="danger" padding-left>
             Email is required
           </p>
-          <p *ngIf="email.errors && email.errors.pattern" danger padding-left>
+          <p *ngIf="email.errors && email.errors.pattern" color="danger" padding-left>
             Email is invalid
           </p>
         </div>
 
         <ion-item>
-          <ion-label floating primary>Phone</ion-label>
+          <ion-label floating color="primary">Phone</ion-label>
           <ion-input [(ngModel)]="report.phone" name="phone" type="text" #phone="ngModel" pattern="^[0-9]*$">
           </ion-input>
         </ion-item>
         <div [hidden]="phone.valid || phone.untouched" >
-          <p *ngIf="phone.errors && phone.errors.pattern" danger padding-left>
+          <p *ngIf="phone.errors && phone.errors.pattern" color="danger" padding-left>
             Phone Number is invalid. Enter a valid Phone number
           </p>
           </div>
 
           <ion-item>
-          <ion-label floating primary>Message</ion-label>
+          <ion-label floating color="primary">Message</ion-label>
           <ion-textarea [(ngModel)]="report.message" name="message" type="text" #message="ngModel" required></ion-textarea>
          </ion-item>
         <div [hidden]="message.valid || message.untouched" >
-          <p  *ngIf="message.errors && message.errors.required" danger padding-left>
+          <p  *ngIf="message.errors && message.errors.required" color="danger" padding-left>
             Phone Number is required
           </p>
           </div>
 
         <div padding>
-          <button (click)="onSubmit(reportForm)" type="submit" danger block>Submit</button>
+          <button ion-button (click)="onSubmit(reportForm)" type="submit" color="danger" block>Submit</button>
         </div>
 
       </form>

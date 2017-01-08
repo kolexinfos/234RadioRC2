@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TutorialPage } from '../pages/tutorial/tutorial';
@@ -18,7 +18,9 @@ interface PageObj {
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = TutorialPage; 
+  rootPage = TutorialPage;
+
+  @ViewChild('Nav') nav: NavController;
 
   pages : PageObj[] = [
     { title: 'Home', component: HomePage, icon: 'contacts' },
@@ -39,5 +41,15 @@ export class MyApp {
     });
   }
 
-  
+  openPage(page: PageObj) {
+    // the nav component was found using @ViewChild(Nav)
+    // reset the nav to remove previous pages and only have this page
+    // we wouldn't want the back button to show in this scenario
+    if (page.index) {
+      this.nav.setRoot(page.component, {tabIndex: page.index});
+
+    } else {
+      this.nav.setRoot(page.component);
+    }
+  }
 }
