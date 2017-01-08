@@ -3,12 +3,25 @@
     <!--<button menuToggle >
       <ion-icon color="danger" name="menu"></ion-icon>
     </button>-->
-    <ion-buttons color="danger" start>
+    <!--<ion-buttons color="danger" start>
       <button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons>-->
+    <button ion-button menuToggle start>
+        <ion-icon name="ios-menu-outline"></ion-icon>
+    </button>
     <ion-title>Home</ion-title>
+
+    <ion-buttons end>
+        <button ion-button icon-only (click)="action1()">
+            <ion-icon name="create"></ion-icon>
+        </button>
+
+        <button ion-button icon-only (click)="action2()">
+            <ion-icon name="trash"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 
 

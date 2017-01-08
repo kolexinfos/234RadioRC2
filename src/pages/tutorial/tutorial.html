@@ -3,8 +3,13 @@
     <!--<button menuToggle>-->
     <!--  <ion-icon name="menu"></ion-icon>-->
     <!--</button>-->
-    <ion-buttons end *ngIf="showSkip">
+    <!--<ion-buttons end *ngIf="showSkip">
       <button (click)="startApp()" color="custom">Skip</button>
+    </ion-buttons>-->
+    <ion-buttons end>
+        <button ion-button icon-only (click)="startApp()">
+            <ion-icon name="skip-forward"></ion-icon>
+        </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
