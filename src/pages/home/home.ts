@@ -28,53 +28,37 @@ mySlideOptions = {
   };
 
   playState: string
+  //audioStream = new Audio("http://streaming.radio.co/s7f3695a64/listen");
 
-  player:any;
-  constructor(player: RadioPlayer, public navCtrl: NavController, public loadingCtrl: LoadingController) {
-    this.player = player;
+  constructor(public player: RadioPlayer, public navCtrl: NavController, public loadingCtrl: LoadingController) {
+    //this.player = player;
+    this.startPlaying();
     this.playState = "pause";
-    //this.startPlaying();
+    
     console.log("Constructor called");
   }
 
   
   ionViewDidEnter() {
-    var audioElement = <HTMLAudioElement>document.getElementById("toggle");
-
-    let loadingPopup = this.loadingCtrl.create({
-      content: 'Loading the stream please wait...'
-    });
-
-    loadingPopup.present();
-    audioElement.addEventListener("playing", function() { loadingPopup.dismiss();  }, true);
-
-  }
-
-  clearBusy(){
-    console.log("Playing now....");
-
-    //this.loadingPopup.dismiss();
-
+    console.log("View did enter");
+    
   }
 
   Toggle() {
 
-        var audioElement = <HTMLAudioElement>document.getElementById("toggle");
-
         console.log('Playback was toggled');
-        console.log(audioElement);
-        if(audioElement.paused)
-        {
+        
+        if(this.playState == 'pause'){
 
-          audioElement.play();
-          this.playState = "pause"
+        this.player.pause();
+          console.log('The sream is paused');
+          this.playState = "play";        
         }
-        else
-        {
-          audioElement.pause();
-          this.playState = "play"
+        else{
+          this.startPlaying();
+          this.playState = "pause";
         }
-    }
+      }   
 
 
   startPlaying() {
@@ -83,11 +67,14 @@ mySlideOptions = {
     });
 
     loadingPopup.present();
-
-    this.player.play().then(() => {
-      console.log('Playing');
-      loadingPopup.dismiss();
-    });
+    
+        this.player.play()
+        .then(() => {
+          console.log('Playing');
+          
+          loadingPopup.dismiss();
+        });
+    
   }
 
   ShareApp() {
