@@ -32,7 +32,7 @@ mySlideOptions = {
 
   constructor(public player: RadioPlayer, public navCtrl: NavController, public loadingCtrl: LoadingController) {
     //this.player = player;
-    this.startPlaying();
+   
     this.playState = "pause";
     
     console.log("Constructor called");
@@ -41,6 +41,7 @@ mySlideOptions = {
   
   ionViewDidEnter() {
     console.log("View did enter");
+     this.startPlaying();
     
   }
 
@@ -62,6 +63,8 @@ mySlideOptions = {
 
 
   startPlaying() {
+    
+    if(this.player.playing == false){
     let loadingPopup = this.loadingCtrl.create({
       content: 'Loading please wait...'
     });
@@ -71,9 +74,9 @@ mySlideOptions = {
         this.player.play()
         .then(() => {
           console.log('Playing');
-          
           loadingPopup.dismiss();
         });
+    }
     
   }
 
