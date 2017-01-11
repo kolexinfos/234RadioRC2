@@ -97,7 +97,7 @@ mySlideOptions = {
 
   gotoReport(){
     console.log("Report clicked");
-    this.navCtrl.setRoot(ReportPage);
+    this.navCtrl.push(ReportPage);
   }
 
   onSlideChangeStart(event){
@@ -106,7 +106,7 @@ mySlideOptions = {
 
   gotoContact(){
     console.log("Contact clicked");
-    this.navCtrl.setRoot(ContactPage);
+    this.navCtrl.push(ContactPage);
   }
 
   gotoPrograms(){
