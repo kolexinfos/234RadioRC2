@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Toast, SocialSharing } from 'ionic-native'
+import { Toast, SocialSharing, Device } from 'ionic-native'
 
 import { HomePage } from '../home/home';
 
@@ -26,6 +26,7 @@ export class VerifyPage {
   ShareApp() {
      this.navCtrl.setRoot(HomePage);
      
+     console.log(Device.platform);
     SocialSharing.share("234Radio", "234Radio", "http://www.preptitude.com/shoppa/gtb.jpg").then(() => {
       console.log("Success");
      

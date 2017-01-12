@@ -39,12 +39,12 @@ export class MyApp {
         console.log("Back button pressed");
         
         if(this.nav.canGoBack()){
-          
+           this.nav.pop();
          }
         else
-          {
-            
-          }
+        {
+          navigator['app'].exitApp();  
+        }
         
         }, 100);
     });

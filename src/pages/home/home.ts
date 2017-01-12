@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import {InAppBrowser, SocialSharing} from 'ionic-native';
 
-import { WebPage } from '../web/web';
+
 import { ReportPage } from '../report/report';
 import { ContactPage } from '../contact/contact';
 

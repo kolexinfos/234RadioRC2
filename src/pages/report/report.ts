@@ -60,7 +60,7 @@ export class ReportPage {
                     this.report = {};
 
                     loadingPopup.dismiss();
-                    this.navController.setRoot(HomePage);
+                    this.navController.pop();
                      Toast.show("You report was submitted successfully.", "short", 'bottom').subscribe(
                             toast => {
                             console.log(toast);
