@@ -25,9 +25,17 @@ export class VerifyPage {
 
   ShareApp() {
      this.navCtrl.setRoot(HomePage);
-     
+     let image = "";
+
      console.log(Device.platform);
-    SocialSharing.share("234Radio", "234Radio", "http://www.preptitude.com/shoppa/gtb.jpg").then(() => {
+     if(Device.platform == "Android"){
+       image = "http://234radio.com/wp-content/uploads/2016/06/Download-App-on-Android.png";
+     }
+     else{
+       image = "http://234radio.com/wp-content/uploads/2016/06/Available-on-the-App-Store.png"
+     }
+     
+    SocialSharing.share("234Radio", "234Radio", image).then(() => {
       console.log("Success");
      
     }).catch(() => {
