@@ -35,7 +35,7 @@ export class VerifyPage {
        image = "http://234radio.com/wp-content/uploads/2016/06/Available-on-the-App-Store.png"
      }
      
-    SocialSharing.share("234Radio", "234Radio", image).then(() => {
+    SocialSharing.share("Get unlimited access to unparalleled programmes and news on the radio", "234Radio", image).then(() => {
       console.log("Success");
      
     }).catch(() => {

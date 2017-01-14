@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-import {InAppBrowser, SocialSharing} from 'ionic-native';
+import {InAppBrowser, SocialSharing, Device} from 'ionic-native';
 
 
 import { ReportPage } from '../report/report';
@@ -81,12 +81,27 @@ mySlideOptions = {
   }
 
   ShareApp() {
-  SocialSharing.share("234Radio", "234Radio", "http://www.preptitude.com/shoppa/gtb.jpg").then(() => {
-    console.log("Success");
-  }).catch(() => {
-    console.log("Error");
-  });
-}
+     this.navCtrl.setRoot(HomePage);
+     let image = "";
+
+     console.log(Device.platform);
+     if(Device.platform == "Android")
+     {
+       image = "http://234radio.com/wp-content/uploads/2016/06/Download-App-on-Android.png";
+     }
+     else{
+       image = "http://234radio.com/wp-content/uploads/2016/06/Available-on-the-App-Store.png"
+     }
+     
+    SocialSharing.share("Get unlimited access to unparalleled programmes and news on the radio", "234Radio", image).then(() => {
+      console.log("Success");
+     
+    }).catch(() => {
+      
+      console.log("Error");
+      
+    });
+  }
 
   openWeb(){
     console.log("Web clicked");
