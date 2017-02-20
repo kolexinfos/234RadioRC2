@@ -6,6 +6,7 @@ import { Toast, ImagePicker } from 'ionic-native';
 import { HomePage } from '../home/home';
 
 import { MessageProvider } from '../../providers/message-provider/message-provider';
+import {Plugins} from '../../providers/plugin.service';
 
 
 @Component({
