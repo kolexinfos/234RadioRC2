@@ -1,7 +1,7 @@
 <ion-header>
 	<ion-navbar color="danger">
 		<ion-title>
-			iWitness
+			Send a Message/Report
 		</ion-title>
 
 		 <button ion-button menuToggle start>
@@ -27,7 +27,7 @@
 
         <ion-item>
           <ion-label floating color="primary">Email Address</ion-label>
-          <ion-input [(ngModel)]="report.email" name="email" type="text" #email="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+          <ion-input [(ngModel)]="report.email" name="email" type="text" #email="ngModel" required>
           </ion-input>
         </ion-item>
         <div [hidden]="email.valid || email.untouched" >
@@ -41,11 +41,13 @@
 
         <ion-item>
           <ion-label floating color="primary">Phone</ion-label>
-          <ion-input [(ngModel)]="report.phone" name="phone" type="text" #phone="ngModel"  pattern="^[0-9]*$">
+          <ion-input [(ngModel)]="report.phone" name="phone" type="text" #phone="ngModel"  required pattern="^[0-9]*$">
           </ion-input>
         </ion-item>
         <div [hidden]="phone.valid || phone.untouched" >
-
+           <p  *ngIf="phone.errors && phone.errors.required" color="danger" padding-left>
+            Phone Number is required
+          </p>              
           <p *ngIf="phone.errors && phone.errors.pattern" color="danger" padding-left>
             Phone Number is invalid. Enter a valid Phone number
           </p>
@@ -57,15 +59,16 @@
          </ion-item>
         <div [hidden]="message.valid || message.untouched" >
           <p  *ngIf="message.errors && message.errors.required" color="danger" padding-left>
-            Phone Number is required
+            Full Message is required
           </p>
           </div>
           
         <div>
         <ion-item>
-          <button ion-button color="danger" (click)="FileSelected()" outline>Select Image</button>
-        </ion-item>
+          <button ion-button color="danger" (click)="FileSelected()" outline>Select Image</button>          
+        </ion-item>        
         </div>
+        
 
         <div padding>
           <button ion-button (click)="onSubmit(reportForm)" type="submit" color="danger" block>Submit</button>

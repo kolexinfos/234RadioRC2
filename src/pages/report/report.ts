@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, LoadingController } from 'ionic-angular';
+import {NavController, LoadingController, NavParams, App   } from 'ionic-angular';
 
 import { Toast, ImagePicker, Transfer } from 'ionic-native';
 
@@ -17,17 +17,26 @@ import {Plugins} from '../../providers/plugin.service';
 export class ReportPage {
 
 
-    report: {email?: string, message?: string, phone?: string,title?: string,type?:string, fileUrl?:any} = {};
+    report: {email?: string, message?: string, phone?: string,title?: string,type?:string, filename?:string} = {};
 
     uri:string = '';
+    title:string = '';
 
     submit = false;
 
-    constructor(private navController: NavController,
+    constructor(public navParams: NavParams, private navController: NavController,
     private messageProvider: MessageProvider,
+    private app: App,
     private loadingCtrl: LoadingController)
     {
+       
+        this.title = this.navParams.get('type');
+        console.log(this.title);
+    }
 
+    ionViewDidEnter(){         
+        
+        this.app.setTitle(this.title);
     }
 
     FileSelected(){
@@ -47,17 +56,24 @@ export class ReportPage {
 
     onSubmit(form)
     {
+         let loadingPopup = this.loadingCtrl.create({
+                  content: 'Sending your report...',
+                  dismissOnPageChange : true
+            });
+            
+        Toast.show("Please wait sending your report...", "short", 'bottom').subscribe(
+                            toast => {
+                            console.log(toast);
+                          }
+                    );
         console.log("The details in the form is " + form);
         this.submit = true;
         this.upload();
         
-        this.report.type = "report";
-        if(form.valid){
-            
-            let loadingPopup = this.loadingCtrl.create({
-                  content: 'Loading data...'
-            });
-
+        this.report.type = this.title;
+        console.log(this.report.filename);
+        if(form.valid && this.report.filename != "")
+        {  
             loadingPopup.present();
 
             this.messageProvider.SendReport(this.report).subscribe(
@@ -65,7 +81,7 @@ export class ReportPage {
                     console.log(data);
                     this.report = {};
 
-                    loadingPopup.dismiss();
+                    loadingPopup.dismiss().catch(() => {});
                     this.navController.pop();
                      Toast.show("You report was submitted successfully.", "short", 'bottom').subscribe(
                             toast => {
@@ -74,7 +90,7 @@ export class ReportPage {
                     );
                 },
                 err => {
-                    loadingPopup.dismiss();
+                    loadingPopup.dismiss().catch(() => {});
 
                     console.log(err);
 
@@ -86,23 +102,34 @@ export class ReportPage {
                 },
                 () => {
                     console.log('Finally called on CreateReport');
-                    loadingPopup.dismiss();
+                   loadingPopup.dismiss().catch(() => {});
                 }
                 )
+        }
+        else{
+            Toast.show("Please make sure all the fields are filled in and an image is selected", "long", 'bottom').subscribe(
+                            toast => {
+                            console.log(toast);
+                          });
+            
         }
     }
 
     upload(){
         const fileTransfer = new Transfer();
         var options: any;
-        var filename = this.report.email + new Date().getUTCMilliseconds();
+        var parts = this.uri.split('/');
+        var filename = parts[parts.length - 1];
+        console.log(parts.length);
+        filename = filename;
+        this.report.filename =filename;
 
         options = {
             fileKey: 'file',
             fileName: filename,
             headers: {}
         }
-        fileTransfer.upload(this.uri, "https://shoppa.herokuapp.com/users/", options)
+        fileTransfer.upload(this.uri, "https://shoppa.herokuapp.com/users/upload", options)
         .then((data) => {
             console.log(data)
         }, (err) => {

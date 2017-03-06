@@ -112,7 +112,9 @@ mySlideOptions = {
 
   gotoReport(){
     console.log("Report clicked");
-    this.navCtrl.push(ReportPage);
+    this.navCtrl.push(ReportPage,{
+      type : 'Report'
+    });
   }
 
   onSlideChangeStart(event){
@@ -121,7 +123,9 @@ mySlideOptions = {
 
   gotoContact(){
     console.log("Contact clicked");
-    this.navCtrl.push(ContactPage);
+    this.navCtrl.push(ReportPage,{
+      type : 'Contact'
+    });
   }
 
   gotoPrograms(){
