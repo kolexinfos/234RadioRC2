@@ -39,7 +39,7 @@ export class TutorialPage {
       },
       {
         title: 'Find <b>234Radio</b> on all social media platforms',
-        description: 'Follow us on Twitter: @my234radio and search for 234Radio on Facebook',
+        description: 'Follow us on Twitter: @my234radio, on Instagram @234Radio and search for 234Radio on Facebook',
         image: 'img/234radio.jpg',
       },
       {

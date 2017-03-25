@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 
-import { Toast } from 'ionic-native';
+import { Toast, ImagePicker, Transfer } from 'ionic-native';
 
 import { HomePage } from '../home/home';
 
@@ -18,7 +18,10 @@ import { MessageProvider } from '../../providers/message-provider/message-provid
 })
 export class ContactPage {
 
-  report: {email?: string, message?: string, phone?: string,title?: string,type?:string} = {};
+  report: {email?: string, message?: string, phone?: string,title?: string,type?:string, filename?:string} = {};
+
+    uri:string = '';
+    title:string = '';
 
     submit = false;
 
@@ -27,6 +30,21 @@ export class ContactPage {
     private loadingCtrl: LoadingController)
     {
 
+    }
+
+    FileSelected(){
+      let options = {
+        // quality of resized image, defaults to 100
+        quality: 99,
+        maximumImagesCount:1
+      };
+
+      ImagePicker.getPictures(options).then((results) => {
+        for (var i = 0; i < results.length; i++) {
+          console.log('Image URI: ' + results[i]);
+          this.uri = results[i]
+        }
+      }, (err) => { });
     }
 
     onSubmit(form)
@@ -74,5 +92,29 @@ export class ContactPage {
                 )
         }
     }
+
+     upload(){
+        const fileTransfer = new Transfer();
+        var options: any;
+        var parts = this.uri.split('/');
+        var filename = parts[parts.length - 1];
+        console.log(parts.length);
+        filename = filename;
+        this.report.filename =filename;
+
+        options = {
+            fileKey: 'file',
+            fileName: filename,
+            headers: {}
+        }
+        fileTransfer.upload(this.uri, "https://shoppa.herokuapp.com/users/upload", options)
+        .then((data) => {
+            console.log(data)
+        }, (err) => {
+            // error
+            console.log(err);
+        })
+}
+
 
 }
