@@ -31,8 +31,8 @@ export class MyApp {
     { title: 'Contact Us', component: ReportPage, icon: 'mail', index:4 },
     { title: 'Twitter', component: VerifyPage, icon: 'logo-twitter', index:5 },
     { title: 'Facebook', component: VerifyPage, icon: 'logo-facebook', index:6 },
-    { title: 'Website', component: VerifyPage, icon: 'link', index:7 },
-   // { title: 'Call Us', component: VerifyPage, icon: 'mail', index:3 }
+    { title: 'Instagram', component: VerifyPage, icon: 'logo-instagram', index:8 },
+    { title: 'Website', component: VerifyPage, icon: 'link', index:7 }    
   ];
 
   constructor(platform: Platform) {
@@ -71,7 +71,7 @@ export class MyApp {
 
   openInstagram(){
     console.log("Open Instagram");
-    let browser = new InAppBrowser('http://234radio.com', '_blank', "EnableViewPortScale=yes,location=no" );
+    let browser = new InAppBrowser('https://www.instagram.com/234radio/', '_blank', "EnableViewPortScale=yes,location=no" );
     browser.show();
   }
 
@@ -101,6 +101,9 @@ export class MyApp {
       }
       else if (page.index == 7){
         this.openWeb();
+      }
+      else if (page.index == 8){
+        this.openInstagram();
       }
       else{
         this.nav.push(page.component, {tabIndex: page.index});

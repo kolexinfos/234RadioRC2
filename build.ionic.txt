@@ -1,0 +1,33 @@
+keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+
+ionic build android -release --prod
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore 234radio.keystore android-release-unsigned.apk 234radio
+
+
+You can run zipalign manually in command line
+
+https://developer.android.com/studio/command-line/zipalign.html
+zipalign -f -v 4 android-release-unsigned.apk junglenomics.apk
+
+Note that zipalign is located inside ${sdk.dir}\tools
+
+For more details visit zipalign
+
+[Update]
+
+Also, If you need to sign it you can do that using
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore YOURKEYSTORE unsigned.apk alias_name
+(jarsigner is located inside java JDK_HOME/bin)
+
+Generate Key
+keytool -genkey -v -keystore 234radio.keystore -alias 234radio -keyalg RSA -keysize 2048 -validity 10000
+
+Sign with KEy
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore junglenomics.keystore android-release-unsigned.apk junglenomics
+
+ZipAlign
+zipalign -f -v 4 android-release-unsigned.apk 234radio.apk
+
+
